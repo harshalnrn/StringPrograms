@@ -16,10 +16,14 @@ public class StringDuplicates {
             //options
             //1. linear search : if str1[i] already present in checked, then skip
            // OR
-            //2. bbacktrack in loop from 0 to i and search in previous elemtn
+            //2. backtrack in loop from 0 to i and search in previous element // this saves on memory and time.
             int freq = 0; //for each pass
-            if (search(str1[i], checked)) {
+/*            if (search(str1[i], checked)) {
                 continue; //skip
+            }*/
+
+            if(backtrack(str1[i],str1,i)){
+                continue; //skip and move to next
             }
             for (int j = i; j < str1.length; j++) {
 
@@ -53,6 +57,17 @@ public class StringDuplicates {
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == c) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean backtrack(char c, char[] arr, int index) {
+
+
+        for(int i=0;i< index;i++){
+            if (arr[i]==c){
                 return true;
             }
         }
