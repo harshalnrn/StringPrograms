@@ -9,11 +9,15 @@ public class SubstringSearch {
 /*          Algorithm steps
             1. n = length [str]
             2. m = length [pattern]
-            3. for s = 0 to n -m do
-            4. if P [1.....m] = T [s + 1....s + m]
-            5. then print s*/
+            3. for1 s = [0 to n -m] do
+            4. for2 j= [0 to m)
+            5. if str [s+j] != pattern [j]  break inner,  else continue // we make conditional incremental of s here via s+j
+            6. end for2
+            7.for each pass check if j==m break;
+            8. end for1
+            9. then print found with s or not found*/
     public static void main(String[] args){
-        String s1="An apple pie";
+        String s1="An apple pie adadad";
         String pattern="pie";
 
         int n=s1.length();
@@ -32,11 +36,14 @@ public class SubstringSearch {
             int j;
             //pattern string length loop
             for (j = 0; j < m; j++) {
+                //extra conditional incremental indexof i acheived by (i+j)
                 if (s1.charAt(i + j) != pattern.charAt(j))
                     break;
             }
-            if (j == m)  // denotes all characters of pattern found
+            if (j == m) { // denotes all characters of pattern found
                 System.out.println("Pattern occurs at index " + i);
+                break;
+            }
         }
 
     }
