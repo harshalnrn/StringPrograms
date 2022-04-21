@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-
+//Subsequence is sequence whihc is created by omitting few characters, without changing the order. hence it need not be contigious but same order of characters to be maintained.
 //O(n2) complexity problems
 public class SubSequenceChecker {
 
