@@ -1,6 +1,7 @@
 public class LongestCommonSubstring {
 
     public static void main(String[] args){
+
         String s1="acdef";  //primary being the smaller one
         String s2="sgcdefmssgsdpefa";
 
