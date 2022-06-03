@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Immutability {
+
 
     //String (String object vs String literal)
     // StringBuilder, StringBuffer
@@ -56,3 +60,38 @@ s1.append("narayan");
 
 
 // String regex pattern validation: String.matches () vs Pattern.matcher()
+
+
+//make this object immutable (i.e meaning once the object is created, it content cannot be modified in any way)
+final class Person{
+   // If the instance variable declared as final, JVM won't provide any default value for the final instance variable.
+   private final String name;
+   private final int age;
+   private final List<String> interests;
+
+    public Person(String name, int age, List<String> interests) {
+        this.name = name;
+        this.age = age;
+        //IMP: make another object copy and then assign,so that pass by reference doesnt impact initialization, this making it immuatable
+        List<String> list1=new ArrayList<>(interests);
+        this.interests = list1;
+    }
+
+    public static void main(String[] args){
+        List<String> list=new ArrayList<>();
+Person person=new Person("afaaf",14, list);
+
+
+/*             - The class must be declared as final so that child classes can’t be created.
+                - Data members in the class must be declared private so that direct access is not allowed.
+                - Data members in the class must be declared as final so that we can’t change the value of it after object creation.
+                - A parameterized constructor should initialize all the fields performing a deep copy so that data members can’t be modified with an object reference.
+                - Deep Copy of objects should be performed in the getter methods to return a copy rather than returning the actual object reference)*/
+
+
+}
+
+
+
+//Solving pass by reference issue with making a copy
+}

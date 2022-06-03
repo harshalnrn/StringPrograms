@@ -23,7 +23,7 @@ public class SoldProductsAggregator {
         List<SimpleSoldProduct> list=new ArrayList<>();
         SoldProductsAggregate soldProductsAggregate=new SoldProductsAggregate();
         //a)need to iterate stream and b) convert to eur and calculate sum of price of each sold product
-        BigDecimal[] sum=new BigDecimal[1];
+        BigDecimal[] sum=new BigDecimal[1]; // had to create an array, since doesnt allow mutating global variable. i.e should be final/effectivel y final
         Arrays.fill(sum, BigDecimal.ZERO);
       //  BigDecimal sum=new BigDecimal(0);
         products.forEach(i -> {
@@ -31,7 +31,7 @@ public class SoldProductsAggregator {
                 //map to SimpleSoldProducts and add to list
 
                 SimpleSoldProduct simple=new SimpleSoldProduct(i.getName(),i.getPrice());
-list.add(simple);
+                list.add(simple); // this is okay, since not directly mutating actual global variable i.e list
                 Optional<BigDecimal> eurValue=exchangeService.rate(i.currency); //convert
                 sum[0]=eurValue.get().add(sum[0]);
             }
