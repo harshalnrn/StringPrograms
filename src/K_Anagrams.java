@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-//An anagram of a string is another string that contains the same characters, only the order of characters can be different.
+//An anagram of a string is another string that contains the same characters, only the order of characters can be different. (size same)
 //here via k value, only at most K number of characters can be different between 2 strings
 public class K_Anagrams {
 
