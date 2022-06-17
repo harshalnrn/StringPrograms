@@ -2,6 +2,24 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+
+//Notes: 1. How to make a class immutable
+   /*
+               Usage of private and final:-
+                - The class must be declared as final so it cannot be inherited
+                - Data members in the class must be declared private and shouldn't be directly exposed outisde for modificiation at all , with no public setters
+                - Data members in the class must be declared as final so that we can’t change the value of it after object creation even from within, with reassignment
+               Deep copy in constructer and getter:-
+                - A parameterized constructor should initialize all the fields performing a deep copy of reference variables so that data members can’t be modified with an object reference.
+                - Deep Copy of objects should also be performed in the getter methods, to return a copy rather than returning the actual object reference, so that they can retreive them, but not modify the members)*/
+
+/*   2. Backtrack and Think why do we make classes immutable ?
+ *   - whenever object needs to have fixed instance (i.e object and its members cannot be modified in any way)
+ *   example: Class value object like String, wrapper classes need to preserve their state, since they are used as keys for ex in hashmaps.
+ *   - They get treated as pass-by-value and not pass by reference, making it more simple to use, by having state which is single, safe and consistent
+ *   - They are thread safe by default, since immutable objects can be shared across multiple threads, since they cant be mutated
+ * refer Effective Java by Joshua Bloch
+ * */
 public class Immutability {
 
 
@@ -114,19 +132,4 @@ final class Person {
     }
 }
 
-//Notes: 1. How to make a class immutable
-   /*          - The class must be declared as final so it cannot be inherited
-                - Data members in the class must be declared private and shouldn't be directly exposed at all outisde, with no public setters
-                - Data members in the class must be declared as final so that we can’t change the value of it after object creation even from within, with reassignment
-                - A parameterized constructor should initialize all the fields performing a deep copy of reference variables so that data members can’t be modified with an object reference.
-                - Deep Copy of objects should also be performed in the getter methods, to return a copy rather than returning the actual object reference, so that they can retreive them, but not modify the members)*/
 
-/*   2. Backtrack and Think why do we make classes immutable ?
-*   - whenever object needs to have fixed instance (i.e object and its members cannot be modified in any way)
-*   example: Class value object like String, wrapper classes need to preserve their state : i.e strings and integers are often treated as values. Making this conclusion is important, on what object can be treated as fixed value and which variable references.
-*   - They get treated as pass-by-value and not pass by reference, making it more simple to use by having single state, safe and consistent
-*   - They are thread safe by default, since immutable objects can be shared across multiple threads, where they cant be mutated
-*
-*
-* refer Effective Java by Joshua Bloch
-* */
