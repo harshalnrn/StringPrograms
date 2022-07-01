@@ -1,9 +1,14 @@
+/*Problem: given a string of brackets,find the equal point, from where number of open bracket BEFORE this index,
+ equals number of closed brackets FROM and AFTER this index. ex: (())))(
+        ex: */
 public class BracketsProblem {
 
     public static void main(String[] args) {
 
+        //2 aproaches. O(n^2) , O(n)
+        //----------------------------------------------------------------------------------------------------
 
-//time: nk + nj  (i.e 2 n^2)  //very bad
+//time: nk + nj  (i.e ~O(2*n^2))  //very bad
 
         String str = "()))";
         System.out.println(equalPoint(str));
@@ -48,7 +53,7 @@ public class BracketsProblem {
 
 //O(n) complexity
 
-    // Algorithms:
+    // Algorithm:
   /*  Store the number of opening brackets appears in the string up to every index, it must start from starting index.
       Similarly, Store the number of closing brackets appears in the string upto each and every index but it should be done from last index.
       Check if any index has the same value of opening and closing brackets.*/
@@ -57,23 +62,22 @@ public class BracketsProblem {
         int openingBracket = 0;
 //find total count of closing bracket
         for (int i = 0; i < s.length(); i++) {
-         if (s.charAt(i)==')'){
-             closingBracket++;
-         }
+            if (s.charAt(i) == ')') {
+                closingBracket++;
+            }
         }
 
-        //find incremental count of both opening and closing and appropriatly ++ --
+        //find incremental count of both opening and closing and appropriatly ++ / --
 
-        for (int i=0;i<s.length();i++){
-            if (s.charAt(i)=='('){
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
                 closingBracket--;
-            }
-            else{
+            } else {
                 openingBracket++;
             }
 
-            if(openingBracket==closingBracket){
-                return i+1;
+            if (openingBracket == closingBracket) {
+                return i + 1; // since, for closed its including FROM the index.hence +1
             }
 
         }
